@@ -13,10 +13,12 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" ui-sref="home">Beerlist</a>
                 </div>
-                <button type="button" ng-click="logout()" class="btn btn-default navbar-btn">Log Out</button>
+                <p class="navbar-text">{{currentUser}}</p>
+                <a ng-hide = "currentUser" target="_self" href="/auth/facebook" class="btn navbar-btn btn-primary">Login</a>
+                <button ng-show = "currentUser" type="button" ng-click="logout()" class="btn btn-default navbar-btn">Log Out</button>
             </div>
         </nav>
-        <ui-view></ui-view>
+        <ui-view ></ui-view>
     </div>
     <script src="angular/angular.js"></script>
     <script src="angular-ui-router/release/angular-ui-router.js"></script>

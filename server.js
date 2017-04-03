@@ -8,7 +8,8 @@ var authRoutes = require('./routes/authRoutes');
 
 //let's get going...
 var app = express();
-mongoose.connect('mongodb://localhost/beers');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/facebookTest');
 
 app.use(passport.initialize());
 
@@ -22,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/beers', beerRoutes);
 app.use('/auth', authRoutes);
 
-app.all('*', function(req, res) {
+app.all('[^.]+', function(req, res) {
   res.sendFile(__dirname + "/public/index.html")
 });
 

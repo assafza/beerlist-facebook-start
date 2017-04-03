@@ -8,7 +8,7 @@ app.factory('beerFactory', function($http) {
         //if wanted/needed you can do data manipulation and parsing here
 
         //our returned data is wrapped in a pre-resolved promise
-        //we can access that data in our controller using '.then' 
+        //we can access that data in our controller using '.then'
         return response.data
       }, function(err) {
         //console.error(err)
@@ -36,8 +36,6 @@ app.factory('beerFactory', function($http) {
     return $http.post('/beers', newBeer)
       .then(function(response) {
         return response.data
-      }, function(err) {
-        console.error(err)
       });
   };
 
@@ -45,8 +43,6 @@ app.factory('beerFactory', function($http) {
     return $http.delete('/beers/' + beer._id)
       .then(function(response) {
         return response.data;
-      }, function(err) {
-        console.error(err)
       });
   };
 
@@ -54,17 +50,14 @@ app.factory('beerFactory', function($http) {
     return $http.post('/beers/' + id + '/reviews', newReview)
       .then(function(response) {
         return response.data
-      }, function(err) {
-        console.error(err)
-      });
-  };
+      })
+    };
+
 
   beerFactory.deleteReview = function(beerId, reviewId) {
     return $http.delete('/beers/' + beerId + '/reviews/' + reviewId)
       .then(function(response) {
         return response.data
-      }, function(err) {
-        console.error(err)
       });
   };
 

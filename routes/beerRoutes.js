@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var Beer = require("../models/BeerModel");
+var expressJWT = require('express-jwt');
 
+// var ensureAuthenticated = function(req, res, next) {
+//   //this function needs to work
+//   //in the meantime we'll just call next
+//   next();
+// }
 
-var ensureAuthenticated = function(req, res, next) {
-  //this function needs to work
-  //in the meantime we'll just call next
-  next();
-}
+var ensureAuthenticated = expressJWT({ secret: 'MySecretKey' });
 
 router.get('/', function(req, res, next) {
   Beer.find(function(error, beers) {

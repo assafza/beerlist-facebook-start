@@ -1,5 +1,7 @@
-app.controller('AuthCtrl', function($scope) {
+app.controller('AuthCtrl', function($scope , $rootScope, $http) {
   $scope.logout = function() {
-    //todo
+    $rootScope.currentUser = null;
+    delete $http.defaults.headers.common.Authorization;
+    localStorage.removeItem("user");
   }
 });

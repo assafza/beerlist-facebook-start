@@ -4,14 +4,22 @@ app.controller('mainController', function($scope, beerFactory) {
     console.log("here");
     beerFactory.addBeer($scope.newBeer).then(function(beer) {
       $scope.beers.push(beer);
-    });
+    })
+    //this is new
+     .catch(function(err) {
+       alert(err.data.message)
+     });
   }
 
   $scope.removeBeer = function() {
     var self = this;
     beerFactory.removeBeer(this.beer).then(function(response) {
       $scope.beers.splice(self.$index, 1);
-    });
+    })
+    //this is new
+     .catch(function(err) {
+       alert(err.data.message)
+     });
   }
 
   beerFactory.getBeers().then(function(beers) {
@@ -20,7 +28,7 @@ app.controller('mainController', function($scope, beerFactory) {
 
 
   $scope.editBeer = function(index) {
-    // notice that *this* refers to the element's scope - in this case a beer. 
+    // notice that *this* refers to the element's scope - in this case a beer.
     // so by using it below we're adding 'tempBeer' it to the beer's scope.
     this.tempBeer = angular.copy($scope.beers[index]);
   };

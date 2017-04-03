@@ -10,8 +10,8 @@
                 <p>{{beer.name}}</p>
                 <p>{{beer.style}} </p>
                 <p>{{beer.abv}}% ABV</p>
-                <button ng-click="editBeer($index)">Edit Beer</button>
-                <button ng-click="removeBeer($index)">Delete Beer</button>
+                <button ng-show = "currentUser" ng-click="editBeer($index)">Edit Beer</button>
+                <button ng-show = "currentUser" ng-click="removeBeer($index)">Delete Beer</button>
                 <a ui-sref="beer({id: beer._id, beerParam: beer})">Review</a>
                 <hr>
             </div>
@@ -26,7 +26,7 @@
                 <button type="button" ng-click="updateBeer(tempBeer, $index)">Submit</button>
             </form>
         </div>
-        <form>
+        <form ng-show = "currentUser">
             <h3>Add a new beer</h3>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Beer Name" ng-model="newBeer.name"></input>
